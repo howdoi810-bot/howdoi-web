@@ -1,8 +1,13 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Heart, Terminal, Shield, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-white border-t border-slate-200 mt-24 text-slate-500 text-xs">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -16,20 +21,20 @@ export default function Footer() {
               <span className="font-bold text-slate-900 text-sm">Frank • Indie Maker</span>
             </div>
             <p className="text-slate-500 leading-relaxed max-w-sm">
-              Xây dựng các ứng dụng di động và công cụ web tinh gọn, giải quyết các nhu cầu thiết thực trong cuộc sống với tinh thần tự do và độc lập.
+              {t.footer.desc}
             </p>
             <p className="text-slate-400 text-[11px] pt-1">
-              Based in Vietnam • Crafting for the world
+              {t.footer.tagline}
             </p>
           </div>
 
           {/* Quick Nav Col */}
           <div className="md:col-span-3 space-y-2.5">
-            <h4 className="font-semibold text-slate-800 text-xs uppercase tracking-wider">Hệ Sinh Thái</h4>
+            <h4 className="font-semibold text-slate-800 text-xs uppercase tracking-wider">{t.footer.ecosystem}</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#products" className="hover:text-emerald-700 transition-colors">
-                  Sản phẩm & Tiện ích
+                  {t.nav.products}
                 </a>
               </li>
               <li>
@@ -39,7 +44,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/huong-dan" className="hover:text-emerald-700 transition-colors">
-                  Bài viết & Cẩm nang
+                  {t.nav.writing}
                 </Link>
               </li>
             </ul>
@@ -47,23 +52,23 @@ export default function Footer() {
 
           {/* App Store & Legal Col */}
           <div className="md:col-span-3 space-y-2.5">
-            <h4 className="font-semibold text-slate-800 text-xs uppercase tracking-wider">Apple App Store</h4>
+            <h4 className="font-semibold text-slate-800 text-xs uppercase tracking-wider">{t.footer.appstore}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/support" className="hover:text-emerald-700 transition-colors flex items-center gap-1">
-                  <span>Trung tâm Hỗ trợ (Support URL)</span>
+                  <span>{t.footer.supportCenter}</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
                 <Link href="/privacy" className="hover:text-emerald-700 transition-colors flex items-center gap-1">
-                  <span>Quyền riêng tư (Privacy Policy)</span>
+                  <span>{t.footer.privacyPolicy}</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
                 <a href="mailto:evolvetech8@outlook.com" className="hover:text-emerald-700 transition-colors">
-                  Liên hệ: evolvetech8@outlook.com
+                  evolvetech8@outlook.com
                 </a>
               </li>
             </ul>
@@ -72,7 +77,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-slate-400">
-          <p>© {new Date().getFullYear()} Frank (howdoi.id.vn). All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Frank (howdoi.id.vn). {t.footer.copyright}</p>
           <div className="flex items-center gap-2">
             <span>Solo Builder</span>
             <span>•</span>

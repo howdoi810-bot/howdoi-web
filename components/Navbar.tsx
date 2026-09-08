@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Terminal, Layers, Calculator, BookOpen, HelpCircle, Menu, X, Mail, Sparkles } from 'lucide-react';
+import { Layers, Calculator, BookOpen, HelpCircle, Menu, X, Mail, Globe } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { lang, setLang, toggleLang, t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
@@ -22,7 +24,7 @@ export default function Navbar() {
                   Frank
                 </span>
                 <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 rounded-full border border-emerald-200/60">
-                  Indie Maker
+                  {t.nav.role}
                 </span>
               </div>
               <span className="block text-[11px] text-slate-500 font-medium -mt-0.5">
@@ -38,44 +40,82 @@ export default function Navbar() {
               className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
             >
               <Layers className="w-4 h-4 text-slate-400" />
-              Sản phẩm
+              {t.nav.products}
             </Link>
             <Link
               href="/#tools"
               className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
             >
               <Calculator className="w-4 h-4 text-slate-400" />
-              Công cụ tính
+              {t.nav.tools}
             </Link>
             <Link
               href="/huong-dan"
               className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
             >
               <BookOpen className="w-4 h-4 text-slate-400" />
-              Bài viết
+              {t.nav.writing}
             </Link>
             <Link
               href="/support"
               className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
             >
               <HelpCircle className="w-4 h-4 text-slate-400" />
-              Hỗ trợ App (Support)
+              {t.nav.support}
             </Link>
           </nav>
 
-          {/* Desktop Contact CTA */}
+          {/* Language Switcher & Contact CTA */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Language Switcher Pill */}
+            <div className="inline-flex items-center p-1 bg-slate-100 border border-slate-200 rounded-full text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setLang('vi')}
+                className={`px-2.5 py-1 rounded-full transition-all flex items-center gap-1 ${
+                  lang === 'vi'
+                    ? 'bg-white text-emerald-700 shadow-sm font-bold'
+                    : 'text-slate-500 hover:text-slate-900'
+                }`}
+              >
+                <span>🇻🇳</span>
+                <span>VI</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setLang('en')}
+                className={`px-2.5 py-1 rounded-full transition-all flex items-center gap-1 ${
+                  lang === 'en'
+                    ? 'bg-white text-emerald-700 shadow-sm font-bold'
+                    : 'text-slate-500 hover:text-slate-900'
+                }`}
+              >
+                <span>🇬🇧</span>
+                <span>EN</span>
+              </button>
+            </div>
+
             <a
               href="mailto:evolvetech8@outlook.com"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-semibold shadow-sm transition-all hover:scale-105"
             >
               <Mail className="w-3.5 h-3.5" />
-              <span>Gửi thư cho Frank</span>
+              <span>{t.nav.contact}</span>
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-2">
+            {/* Mobile Lang Toggle */}
+            <button
+              type="button"
+              onClick={toggleLang}
+              className="px-2 py-1 bg-slate-100 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 flex items-center gap-1"
+            >
+              <Globe className="w-3 h-3 text-emerald-600" />
+              <span>{lang === 'vi' ? 'VI' : 'EN'}</span>
+            </button>
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -91,13 +131,38 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3">
+          {/* Mobile Lang Selector */}
+          <div className="flex items-center justify-between py-2 border-b border-slate-100 text-xs">
+            <span className="font-semibold text-slate-500">Ngôn ngữ / Language:</span>
+            <div className="flex gap-1.5">
+              <button
+                type="button"
+                onClick={() => setLang('vi')}
+                className={`px-3 py-1 rounded-md text-xs font-semibold ${
+                  lang === 'vi' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'
+                }`}
+              >
+                🇻🇳 Tiếng Việt
+              </button>
+              <button
+                type="button"
+                onClick={() => setLang('en')}
+                className={`px-3 py-1 rounded-md text-xs font-semibold ${
+                  lang === 'en' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'
+                }`}
+              >
+                🇬🇧 English
+              </button>
+            </div>
+          </div>
+
           <Link
             href="/#products"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
           >
             <Layers className="w-4 h-4 text-slate-400" />
-            Sản phẩm & Ứng dụng
+            {t.nav.products}
           </Link>
           <Link
             href="/#tools"
@@ -105,7 +170,7 @@ export default function Navbar() {
             className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
           >
             <Calculator className="w-4 h-4 text-slate-400" />
-            Công cụ tính miễn phí
+            {t.nav.tools}
           </Link>
           <Link
             href="/huong-dan"
@@ -113,7 +178,7 @@ export default function Navbar() {
             className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
           >
             <BookOpen className="w-4 h-4 text-slate-400" />
-            Bài viết & Cẩm nang
+            {t.nav.writing}
           </Link>
           <Link
             href="/support"
@@ -121,14 +186,14 @@ export default function Navbar() {
             className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
           >
             <HelpCircle className="w-4 h-4 text-slate-400" />
-            Hỗ trợ App (Support Portal)
+            {t.nav.support}
           </Link>
           <a
             href="mailto:evolvetech8@outlook.com"
             className="flex items-center justify-center gap-2 w-full py-2.5 mt-2 rounded-xl bg-slate-900 text-white text-sm font-semibold shadow"
           >
             <Mail className="w-4 h-4" />
-            Gửi email tới Frank
+            {t.nav.contact}
           </a>
         </div>
       )}

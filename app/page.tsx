@@ -12,10 +12,6 @@ import {
   PieChart,
   Building2,
   Terminal,
-  ShieldCheck,
-  CheckCircle2,
-  Mail,
-  ExternalLink,
   Code2,
   Cpu,
 } from 'lucide-react';
@@ -25,10 +21,11 @@ import GrossNetCalc from '@/components/calculators/GrossNetCalc';
 import BudgetCalc from '@/components/calculators/BudgetCalc';
 import LoanCalc from '@/components/calculators/LoanCalc';
 import NewsletterWaitlist from '@/components/NewsletterWaitlist';
-import { GUIDES } from '@/content/guides-data';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function IndieHomePage() {
   const [activeTab, setActiveTab] = useState<'laikep' | 'grossnet' | 'budget' | 'loan'>('laikep');
+  const { t } = useLanguage();
 
   return (
     <div className="space-y-24 pb-20">
@@ -41,21 +38,21 @@ export default function IndieHomePage() {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs font-semibold shadow-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Frank • Solo Indie Developer</span>
+            <span>{t.hero.badge}</span>
           </div>
 
           {/* Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-            I design, code & ship{' '}
+            {t.hero.titleStart}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600">
-              useful software
+              {t.hero.titleGradient}
             </span>{' '}
-            for everyday life.
+            {t.hero.titleEnd}
           </h1>
 
           {/* Subtitle */}
           <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Chào bạn, tôi là <strong>Frank</strong>. Tôi tự tay lập trình và vận hành các ứng dụng di động & công cụ web độc lập. Không nhà đầu tư, không bộ máy cồng kềnh — chỉ tập trung giải quyết đúng vấn đề và mang lại giá trị thực tế cho người dùng.
+            {t.hero.subtitle}
           </p>
 
           {/* Action CTAs */}
@@ -65,14 +62,14 @@ export default function IndieHomePage() {
               className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
               <Layers className="w-4 h-4" />
-              <span>Xem các sản phẩm đã phát hành</span>
+              <span>{t.hero.exploreBtn}</span>
             </a>
             <a
               href="#tools"
               className="px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-xs sm:text-sm border border-slate-200 shadow-sm transition-all flex items-center gap-2"
             >
               <Code2 className="w-4 h-4 text-emerald-600" />
-              <span>Dùng thử bộ công cụ miễn phí</span>
+              <span>{t.hero.toolsBtn}</span>
             </a>
           </div>
 
@@ -80,15 +77,15 @@ export default function IndieHomePage() {
           <div className="pt-8 grid grid-cols-3 gap-4 max-w-xl mx-auto text-center border-t border-slate-200/80">
             <div>
               <span className="text-xl sm:text-2xl font-extrabold text-slate-900 block">100%</span>
-              <span className="text-[11px] text-slate-500 font-medium">Solo Bootstrapped</span>
+              <span className="text-[11px] text-slate-500 font-medium">{t.hero.stat1Label}</span>
             </div>
             <div>
               <span className="text-xl sm:text-2xl font-extrabold text-emerald-600 block">iOS & Web</span>
-              <span className="text-[11px] text-slate-500 font-medium">Cross-Platform</span>
+              <span className="text-[11px] text-slate-500 font-medium">{t.hero.stat2Label}</span>
             </div>
             <div>
               <span className="text-xl sm:text-2xl font-extrabold text-slate-900 block">Offline-First</span>
-              <span className="text-[11px] text-slate-500 font-medium">Bảo mật dữ liệu</span>
+              <span className="text-[11px] text-slate-500 font-medium">{t.hero.stat3Label}</span>
             </div>
           </div>
         </div>
@@ -99,14 +96,14 @@ export default function IndieHomePage() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-              Danh Mục Sản Phẩm
+              {t.products.badge}
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
-              Các Ứng Dụng Đã & Đang Xây Dựng
+              {t.products.title}
             </h2>
           </div>
           <p className="text-xs text-slate-500 max-w-xs">
-            Mỗi sản phẩm đều xuất phát từ một nhu cầu thực tế và được trau chuốt tỉ mỉ.
+            {t.products.subtitle}
           </p>
         </div>
 
@@ -121,21 +118,21 @@ export default function IndieHomePage() {
                   <Wallet className="w-7 h-7" />
                 </div>
                 <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                  🟢 Live • Free Web Platform
+                  {t.products.product1.status}
                 </span>
               </div>
 
               <div>
                 <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">
-                  Web App • howdoi.id.vn
+                  {t.products.product1.type}
                 </span>
                 <h3 className="text-2xl font-extrabold text-slate-900 mt-1 group-hover:text-emerald-700 transition-colors">
-                  HowDoI Finance Suite
+                  {t.products.product1.title}
                 </h3>
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Bộ công cụ tính toán tài chính cá nhân dành cho người Việt: mô phỏng lãi kép với biểu đồ tăng trưởng, chuyển đổi lương Gross sang Net chuẩn luật 2026, lập ngân sách 50/30/20 và tính toán vay ngân hàng.
+                {t.products.product1.description}
               </p>
 
               <div className="flex flex-wrap gap-1.5 pt-1">
@@ -156,14 +153,14 @@ export default function IndieHomePage() {
                 href="#tools"
                 className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 transition-colors"
               >
-                <span>Dùng ngay bên dưới</span>
+                <span>{t.products.product1.cta}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
               <Link
                 href="/huong-dan"
                 className="text-xs text-slate-500 hover:text-slate-800 underline"
               >
-                Đọc cẩm nang tài chính
+                {t.products.product1.guideLink}
               </Link>
             </div>
           </div>
@@ -178,21 +175,21 @@ export default function IndieHomePage() {
                   <Smartphone className="w-7 h-7" />
                 </div>
                 <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200">
-                  ⚡ In Development • iOS & Web
+                  {t.products.product2.status}
                 </span>
               </div>
 
               <div>
                 <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">
-                  Mobile & Productivity Lab
+                  {t.products.product2.type}
                 </span>
                 <h3 className="text-2xl font-extrabold text-slate-900 mt-1 group-hover:text-blue-600 transition-colors">
-                  Personal Apps & Micro-Tools
+                  {t.products.product2.title}
                 </h3>
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Các ứng dụng di động iOS bản địa (Native iOS) và công cụ tiện ích hỗ trợ năng suất cá nhân, quản lý công việc và cuộc sống theo triết lý tinh gọn, ưu tiên lưu trữ offline và bảo vệ quyền riêng tư 100%.
+                {t.products.product2.description}
               </p>
 
               <div className="flex flex-wrap gap-1.5 pt-1">
@@ -213,18 +210,17 @@ export default function IndieHomePage() {
                 href="/support"
                 className="text-xs font-bold text-slate-700 hover:text-blue-600 flex items-center gap-1 transition-colors"
               >
-                <span>Hỗ Trợ Ứng Dụng (Support Portal)</span>
+                <span>{t.products.product2.cta}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
                 href="/privacy"
                 className="text-xs text-slate-500 hover:text-slate-800 underline"
               >
-                Chính sách bảo mật
+                {t.products.product2.privacyLink}
               </Link>
             </div>
           </div>
-
         </div>
 
         {/* Product 3: Next Thing / Lab teaser */}
@@ -234,15 +230,15 @@ export default function IndieHomePage() {
               <Cpu className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">What&apos;s next? Đang ấp ủ sản phẩm tiếp theo...</h4>
-              <p className="text-xs text-slate-500">Thử nghiệm các tiện ích AI và micro-tools hỗ trợ năng suất cá nhân.</p>
+              <h4 className="text-sm font-bold text-slate-900">{t.products.lab.title}</h4>
+              <p className="text-xs text-slate-500">{t.products.lab.desc}</p>
             </div>
           </div>
           <a
             href="mailto:evolvetech8@outlook.com"
             className="text-xs font-bold px-4 py-2 bg-white rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 shrink-0 transition-colors"
           >
-            Đề xuất ý tưởng cho Frank →
+            {t.products.lab.cta}
           </a>
         </div>
       </section>
@@ -251,13 +247,13 @@ export default function IndieHomePage() {
       <section id="tools" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 space-y-6">
         <div className="text-center space-y-2">
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-            Interactive Tools
+            {t.tools.badge}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Bộ Công Cụ Tính Toán Miễn Phí
+            {t.tools.title}
           </h2>
           <p className="text-slate-500 text-xs sm:text-sm max-w-lg mx-auto">
-            Một phần trong hệ sinh thái sản phẩm HowDoI. Chọn công cụ để tính toán ngay:
+            {t.tools.subtitle}
           </p>
         </div>
 
@@ -273,7 +269,7 @@ export default function IndieHomePage() {
             }`}
           >
             <TrendingUp className="w-4 h-4 text-emerald-600" />
-            Lãi Kép & Tích Lũy
+            {t.tools.tab1}
           </button>
 
           <button
@@ -286,7 +282,7 @@ export default function IndieHomePage() {
             }`}
           >
             <Wallet className="w-4 h-4 text-blue-600" />
-            Lương Gross - Net
+            {t.tools.tab2}
           </button>
 
           <button
@@ -299,7 +295,7 @@ export default function IndieHomePage() {
             }`}
           >
             <PieChart className="w-4 h-4 text-teal-600" />
-            Ngân Sách 50/30/20
+            {t.tools.tab3}
           </button>
 
           <button
@@ -312,7 +308,7 @@ export default function IndieHomePage() {
             }`}
           >
             <Building2 className="w-4 h-4 text-amber-600" />
-            Vay Mua Nhà / Xe
+            {t.tools.tab4}
           </button>
         </div>
 
@@ -331,19 +327,19 @@ export default function IndieHomePage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-500/30">
               <Terminal className="w-3.5 h-3.5" />
-              <span>Indie Dev Philosophy</span>
+              <span>{t.philosophy.badge}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Tại sao tôi chọn con đường Solo Indie Developer?
+              {t.philosophy.title}
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Tôi tin vào sức mạnh của sự tinh gọn. Khi một kỹ sư làm chủ toàn bộ quy trình từ ý tưởng, thiết kế UI/UX, viết code front-end/back-end đến hỗ trợ người dùng, sản phẩm sẽ được tạo ra với sự thấu hiểu sâu sắc nhất mà không bị phân mảnh qua các tầng họp hành báo cáo.
+              {t.philosophy.text}
             </p>
           </div>
 
           <div className="pt-4 border-t border-slate-800 space-y-3">
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
-              Vũ Khí Công Nghệ (Tech Stack Của Frank)
+              {t.philosophy.stackTitle}
             </span>
             <div className="flex flex-wrap gap-2 text-xs">
               <span className="px-3 py-1.5 bg-slate-800 text-emerald-400 font-mono rounded-lg border border-slate-700">
