@@ -6,7 +6,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { lang, setLang, t } = useLanguage();
 
   return (
     <footer className="bg-white border-t border-slate-200 mt-24 text-slate-500 text-xs">
@@ -76,14 +76,33 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-slate-400">
+        <div className="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-400">
           <p>© {new Date().getFullYear()} Frank (howdoi.id.vn). {t.footer.copyright}</p>
-          <div className="flex items-center gap-2">
-            <span>Solo Builder</span>
-            <span>•</span>
-            <span>No VC</span>
-            <span>•</span>
-            <span>100% Bootstrapped</span>
+          <div className="flex items-center gap-3">
+            <span>Solo Builder • No VC • 100% Bootstrapped</span>
+            <span className="text-slate-300">|</span>
+            <div className="inline-flex items-center gap-1 font-semibold">
+              <span>Language:</span>
+              <button
+                type="button"
+                onClick={() => setLang('vi')}
+                className={`px-1.5 py-0.5 rounded transition-colors ${
+                  lang === 'vi' ? 'text-emerald-700 font-bold bg-slate-100' : 'text-slate-400 hover:text-slate-600'
+                }`}
+              >
+                🇻🇳 VI
+              </button>
+              <span>/</span>
+              <button
+                type="button"
+                onClick={() => setLang('en')}
+                className={`px-1.5 py-0.5 rounded transition-colors ${
+                  lang === 'en' ? 'text-emerald-700 font-bold bg-slate-100' : 'text-slate-400 hover:text-slate-600'
+                }`}
+              >
+                🇬🇧 EN
+              </button>
+            </div>
           </div>
         </div>
       </div>

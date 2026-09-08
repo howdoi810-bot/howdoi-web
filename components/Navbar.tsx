@@ -65,61 +65,52 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          {/* Language Switcher & Contact CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Language Switcher & Actions (Visible on BOTH Desktop and Mobile) */}
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Language Switcher Pill */}
-            <div className="inline-flex items-center p-1 bg-slate-100 border border-slate-200 rounded-full text-xs font-semibold">
+            <div className="inline-flex items-center p-1 bg-slate-100/90 border border-slate-200 rounded-full text-xs font-semibold shadow-inner">
               <button
                 type="button"
                 onClick={() => setLang('vi')}
                 className={`px-2.5 py-1 rounded-full transition-all flex items-center gap-1 ${
                   lang === 'vi'
-                    ? 'bg-white text-emerald-700 shadow-sm font-bold'
-                    : 'text-slate-500 hover:text-slate-900'
+                    ? 'bg-white text-emerald-700 shadow-sm font-bold ring-1 ring-slate-200/80'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
+                title="Chuyển sang Tiếng Việt"
               >
-                <span>🇻🇳</span>
-                <span>VI</span>
+                <span className="text-sm">🇻🇳</span>
+                <span className="text-xs">VI</span>
               </button>
               <button
                 type="button"
                 onClick={() => setLang('en')}
                 className={`px-2.5 py-1 rounded-full transition-all flex items-center gap-1 ${
                   lang === 'en'
-                    ? 'bg-white text-emerald-700 shadow-sm font-bold'
-                    : 'text-slate-500 hover:text-slate-900'
+                    ? 'bg-white text-emerald-700 shadow-sm font-bold ring-1 ring-slate-200/80'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
+                title="Switch to English"
               >
-                <span>🇬🇧</span>
-                <span>EN</span>
+                <span className="text-sm">🇬🇧</span>
+                <span className="text-xs">EN</span>
               </button>
             </div>
 
+            {/* Desktop Contact CTA */}
             <a
               href="mailto:evolvetech8@outlook.com"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-semibold shadow-sm transition-all hover:scale-105"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-semibold shadow-sm transition-all hover:scale-105"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>{t.nav.contact}</span>
             </a>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
-            {/* Mobile Lang Toggle */}
-            <button
-              type="button"
-              onClick={toggleLang}
-              className="px-2 py-1 bg-slate-100 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 flex items-center gap-1"
-            >
-              <Globe className="w-3 h-3 text-emerald-600" />
-              <span>{lang === 'vi' ? 'VI' : 'EN'}</span>
-            </button>
-
+            {/* Mobile Menu Button */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              className="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
