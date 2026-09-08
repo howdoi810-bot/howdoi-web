@@ -29,7 +29,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a href="#products" className="hover:text-emerald-700 transition-colors">
-                  Cho Con (iOS App)
+                  Sản phẩm & Tiện ích
                 </a>
               </li>
               <li>

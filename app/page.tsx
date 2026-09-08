@@ -17,7 +17,6 @@ import {
   Mail,
   ExternalLink,
   Code2,
-  Baby,
   Cpu,
 } from 'lucide-react';
 
@@ -112,64 +111,7 @@ export default function IndieHomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Product 1: Cho Con (iOS App) */}
-          <div className="bg-white rounded-3xl border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-rose-300 hover:shadow-xl transition-all group relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-36 h-36 bg-rose-50 rounded-bl-full -z-0 pointer-events-none" />
-
-            <div className="relative z-10 space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-500 text-white flex items-center justify-center shadow-md">
-                  <Baby className="w-7 h-7" />
-                </div>
-                <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                  🟡 In Review • Apple App Store
-                </span>
-              </div>
-
-              <div>
-                <span className="text-xs font-semibold text-rose-600 uppercase tracking-wider">
-                  iOS Native App • Version 1.0
-                </span>
-                <h3 className="text-2xl font-extrabold text-slate-900 mt-1 group-hover:text-rose-600 transition-colors">
-                  Cho Con - Chuẩn Bị Đón Bé
-                </h3>
-              </div>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Ứng dụng đồng hành cùng các ba mẹ chuẩn bị chu đáo cho ngày sinh: danh sách sắm đồ sơ sinh chuẩn khoa học, chuẩn bị giỏ đồ đi sinh, quản lý ngân sách đón bé và nhắc nhở ngày dự sinh. Hoạt động 100% ngoại tuyến (offline).
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
-                  SwiftUI / iOS
-                </span>
-                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
-                  Offline-First
-                </span>
-                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
-                  Zero Ads
-                </span>
-              </div>
-            </div>
-
-            <div className="relative z-10 pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
-              <Link
-                href="/support"
-                className="text-xs font-bold text-slate-700 hover:text-rose-600 flex items-center gap-1 transition-colors"
-              >
-                <span>Trang Hỗ Trợ (Support URL)</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              <Link
-                href="/privacy"
-                className="text-xs text-slate-500 hover:text-slate-800 underline"
-              >
-                Chính sách bảo mật
-              </Link>
-            </div>
-          </div>
-
-          {/* Product 2: HowDoI Financial Suite (Web) */}
+          {/* Product 1: HowDoI Financial Suite (Web) */}
           <div className="bg-white rounded-3xl border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-emerald-300 hover:shadow-xl transition-all group relative overflow-hidden">
             <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-50 rounded-bl-full -z-0 pointer-events-none" />
 
@@ -225,6 +167,64 @@ export default function IndieHomePage() {
               </Link>
             </div>
           </div>
+
+          {/* Product 2: Mobile & Web Utilities (In Development) */}
+          <div className="bg-white rounded-3xl border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-blue-300 hover:shadow-xl transition-all group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-36 h-36 bg-blue-50 rounded-bl-full -z-0 pointer-events-none" />
+
+            <div className="relative z-10 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-slate-800 text-white flex items-center justify-center shadow-md">
+                  <Smartphone className="w-7 h-7" />
+                </div>
+                <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200">
+                  ⚡ In Development • iOS & Web
+                </span>
+              </div>
+
+              <div>
+                <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">
+                  Mobile & Productivity Lab
+                </span>
+                <h3 className="text-2xl font-extrabold text-slate-900 mt-1 group-hover:text-blue-600 transition-colors">
+                  Personal Apps & Micro-Tools
+                </h3>
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Các ứng dụng di động iOS bản địa (Native iOS) và công cụ tiện ích hỗ trợ năng suất cá nhân, quản lý công việc và cuộc sống theo triết lý tinh gọn, ưu tiên lưu trữ offline và bảo vệ quyền riêng tư 100%.
+              </p>
+
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  SwiftUI / iOS
+                </span>
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  Offline-First
+                </span>
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  Zero Tracking
+                </span>
+              </div>
+            </div>
+
+            <div className="relative z-10 pt-6 mt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+              <Link
+                href="/support"
+                className="text-xs font-bold text-slate-700 hover:text-blue-600 flex items-center gap-1 transition-colors"
+              >
+                <span>Hỗ Trợ Ứng Dụng (Support Portal)</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                href="/privacy"
+                className="text-xs text-slate-500 hover:text-slate-800 underline"
+              >
+                Chính sách bảo mật
+              </Link>
+            </div>
+          </div>
+
         </div>
 
         {/* Product 3: Next Thing / Lab teaser */}
