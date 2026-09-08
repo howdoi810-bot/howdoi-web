@@ -3,17 +3,22 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {
+  Smartphone,
+  Layers,
+  Sparkles,
+  ArrowRight,
   TrendingUp,
   Wallet,
   PieChart,
   Building2,
-  ArrowRight,
+  Terminal,
   ShieldCheck,
-  Sparkles,
-  BookOpen,
   CheckCircle2,
-  Lock,
-  Smartphone,
+  Mail,
+  ExternalLink,
+  Code2,
+  Baby,
+  Cpu,
 } from 'lucide-react';
 
 import CompoundInterestCalc from '@/components/calculators/CompoundInterestCalc';
@@ -23,115 +28,248 @@ import LoanCalc from '@/components/calculators/LoanCalc';
 import NewsletterWaitlist from '@/components/NewsletterWaitlist';
 import { GUIDES } from '@/content/guides-data';
 
-export default function HomePage() {
+export default function IndieHomePage() {
   const [activeTab, setActiveTab] = useState<'laikep' | 'grossnet' | 'budget' | 'loan'>('laikep');
 
   return (
-    <div className="space-y-20 pb-16">
+    <div className="space-y-24 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="relative pt-12 sm:pt-20 pb-12 overflow-hidden">
-        {/* Soft background glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-emerald-100/50 via-teal-50/20 to-transparent pointer-events-none -z-10 blur-2xl" />
+      <section className="relative pt-16 sm:pt-24 pb-8 overflow-hidden">
+        {/* Soft background ambient light */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-80 bg-gradient-to-b from-emerald-100/60 via-teal-50/30 to-transparent pointer-events-none -z-10 blur-3xl" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>HowDoI.vn — Tiếng Nói Độc Lập Về Tài Chính Cá Nhân</span>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs font-semibold shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Frank • Solo Indie Developer</span>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 max-w-4xl mx-auto leading-[1.15]">
-            Người Việt Xứng Đáng Được{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700">
-              Sống An Tâm
-            </span>
-            , Không Còn Nỗi Sợ Về Tiền Bạc.
+          {/* Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+            I design, code & ship{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600">
+              useful software
+            </span>{' '}
+            for everyday life.
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Tôi là <strong>Frank</strong>. Tôi tạo ra <strong>HowDoI</strong> để giúp bạn giải mã các con số tài chính phức tạp, thoát khỏi vòng xoáy lương mòn và từng bước làm chủ tương lai của chính mình.
+          <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Chào bạn, tôi là <strong>Frank</strong>. Tôi tự tay lập trình và vận hành các ứng dụng di động & công cụ web độc lập. Không nhà đầu tư, không bộ máy cồng kềnh — chỉ tập trung giải quyết đúng vấn đề và mang lại giá trị thực tế cho người dùng.
           </p>
 
-          {/* Hero CTAs */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
+          {/* Action CTAs */}
+          <div className="flex flex-wrap justify-center items-center gap-3 pt-2">
             <a
-              href="#calculators"
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-lg shadow-emerald-600/20 transition-all hover:scale-105 flex items-center justify-center gap-2"
+              href="#products"
+              className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
-              <span>Dùng công cụ tính tài chính</span>
-              <ArrowRight className="w-4 h-4" />
+              <Layers className="w-4 h-4" />
+              <span>Xem các sản phẩm đã phát hành</span>
             </a>
-            <Link
-              href="/huong-dan"
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200 shadow-sm transition-all flex items-center justify-center gap-2"
+            <a
+              href="#tools"
+              className="px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-xs sm:text-sm border border-slate-200 shadow-sm transition-all flex items-center gap-2"
             >
-              <BookOpen className="w-4 h-4 text-slate-500" />
-              <span>Đọc cẩm nang thực chiến</span>
-            </Link>
+              <Code2 className="w-4 h-4 text-emerald-600" />
+              <span>Dùng thử bộ công cụ miễn phí</span>
+            </a>
           </div>
 
-          {/* Trust Value Pillars */}
-          <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-            <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-xs font-bold text-slate-900">100% Độc Lập</h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">Không nhận tài trợ lừa đảo, không phím hàng.</p>
-              </div>
+          {/* Indie Maker Stats Bar */}
+          <div className="pt-8 grid grid-cols-3 gap-4 max-w-xl mx-auto text-center border-t border-slate-200/80">
+            <div>
+              <span className="text-xl sm:text-2xl font-extrabold text-slate-900 block">100%</span>
+              <span className="text-[11px] text-slate-500 font-medium">Solo Bootstrapped</span>
             </div>
-
-            <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm flex items-start gap-3">
-              <Lock className="w-5 h-5 text-teal-600 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-xs font-bold text-slate-900">Bảo Mật & Miễn Phí</h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">Mọi phép tính chạy ngay trên máy bạn.</p>
-              </div>
+            <div>
+              <span className="text-xl sm:text-2xl font-extrabold text-emerald-600 block">iOS & Web</span>
+              <span className="text-[11px] text-slate-500 font-medium">Cross-Platform</span>
             </div>
-
-            <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm flex items-start gap-3">
-              <TrendingUp className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-xs font-bold text-slate-900">Toán Học Chuẩn Xác</h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">Cập nhật luật BHXH & Thuế TNCN 2026.</p>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm flex items-start gap-3">
-              <Smartphone className="w-5 h-5 text-purple-600 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-xs font-bold text-slate-900">Sắp Có Bản iOS App</h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">Trợ lý quản lý tài chính bỏ túi tiện lợi.</p>
-              </div>
+            <div>
+              <span className="text-xl sm:text-2xl font-extrabold text-slate-900 block">Offline-First</span>
+              <span className="text-[11px] text-slate-500 font-medium">Bảo mật dữ liệu</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. INTERACTIVE CALCULATORS SUITE */}
-      <section id="calculators" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 space-y-6">
-        <div className="text-center space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-            Hộp Công Cụ Thực Chiến
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Tính Toán Tài Chính Chuẩn Xác Cho Người Việt
-          </h2>
-          <p className="text-slate-500 text-sm max-w-xl mx-auto">
-            Chọn công cụ bạn cần dưới đây để tính toán ngay lập tức:
+      {/* 2. SHIPPED PRODUCTS & APPS SHOWCASE */}
+      <section id="products" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 space-y-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+              Danh Mục Sản Phẩm
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+              Các Ứng Dụng Đã & Đang Xây Dựng
+            </h2>
+          </div>
+          <p className="text-xs text-slate-500 max-w-xs">
+            Mỗi sản phẩm đều xuất phát từ một nhu cầu thực tế và được trau chuốt tỉ mỉ.
           </p>
         </div>
 
-        {/* Tab Buttons */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Product 1: Cho Con (iOS App) */}
+          <div className="bg-white rounded-3xl border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-rose-300 hover:shadow-xl transition-all group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-36 h-36 bg-rose-50 rounded-bl-full -z-0 pointer-events-none" />
+
+            <div className="relative z-10 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-500 text-white flex items-center justify-center shadow-md">
+                  <Baby className="w-7 h-7" />
+                </div>
+                <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                  🟡 In Review • Apple App Store
+                </span>
+              </div>
+
+              <div>
+                <span className="text-xs font-semibold text-rose-600 uppercase tracking-wider">
+                  iOS Native App • Version 1.0
+                </span>
+                <h3 className="text-2xl font-extrabold text-slate-900 mt-1 group-hover:text-rose-600 transition-colors">
+                  Cho Con - Chuẩn Bị Đón Bé
+                </h3>
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Ứng dụng đồng hành cùng các ba mẹ chuẩn bị chu đáo cho ngày sinh: danh sách sắm đồ sơ sinh chuẩn khoa học, chuẩn bị giỏ đồ đi sinh, quản lý ngân sách đón bé và nhắc nhở ngày dự sinh. Hoạt động 100% ngoại tuyến (offline).
+              </p>
+
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  SwiftUI / iOS
+                </span>
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  Offline-First
+                </span>
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  Zero Ads
+                </span>
+              </div>
+            </div>
+
+            <div className="relative z-10 pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+              <Link
+                href="/support"
+                className="text-xs font-bold text-slate-700 hover:text-rose-600 flex items-center gap-1 transition-colors"
+              >
+                <span>Trang Hỗ Trợ (Support URL)</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                href="/privacy"
+                className="text-xs text-slate-500 hover:text-slate-800 underline"
+              >
+                Chính sách bảo mật
+              </Link>
+            </div>
+          </div>
+
+          {/* Product 2: HowDoI Financial Suite (Web) */}
+          <div className="bg-white rounded-3xl border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-emerald-300 hover:shadow-xl transition-all group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-50 rounded-bl-full -z-0 pointer-events-none" />
+
+            <div className="relative z-10 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600 text-white flex items-center justify-center shadow-md">
+                  <Wallet className="w-7 h-7" />
+                </div>
+                <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  🟢 Live • Free Web Platform
+                </span>
+              </div>
+
+              <div>
+                <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">
+                  Web App • howdoi.id.vn
+                </span>
+                <h3 className="text-2xl font-extrabold text-slate-900 mt-1 group-hover:text-emerald-700 transition-colors">
+                  HowDoI Finance Suite
+                </h3>
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Bộ công cụ tính toán tài chính cá nhân dành cho người Việt: mô phỏng lãi kép với biểu đồ tăng trưởng, chuyển đổi lương Gross sang Net chuẩn luật 2026, lập ngân sách 50/30/20 và tính toán vay ngân hàng.
+              </p>
+
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  Next.js 15
+                </span>
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  TypeScript
+                </span>
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-lg">
+                  Recharts
+                </span>
+              </div>
+            </div>
+
+            <div className="relative z-10 pt-6 mt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+              <a
+                href="#tools"
+                className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 transition-colors"
+              >
+                <span>Dùng ngay bên dưới</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+              <Link
+                href="/huong-dan"
+                className="text-xs text-slate-500 hover:text-slate-800 underline"
+              >
+                Đọc cẩm nang tài chính
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Product 3: Next Thing / Lab teaser */}
+        <div className="p-6 rounded-2xl bg-slate-100/70 border border-dashed border-slate-300 text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-slate-200 flex items-center justify-center text-slate-700 shrink-0">
+              <Cpu className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-slate-900">What&apos;s next? Đang ấp ủ sản phẩm tiếp theo...</h4>
+              <p className="text-xs text-slate-500">Thử nghiệm các tiện ích AI và micro-tools hỗ trợ năng suất cá nhân.</p>
+            </div>
+          </div>
+          <a
+            href="mailto:evolvetech8@outlook.com"
+            className="text-xs font-bold px-4 py-2 bg-white rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 shrink-0 transition-colors"
+          >
+            Đề xuất ý tưởng cho Frank →
+          </a>
+        </div>
+      </section>
+
+      {/* 3. INTERACTIVE TOOLS PLAYGROUND */}
+      <section id="tools" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 space-y-6">
+        <div className="text-center space-y-2">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            Interactive Tools
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            Bộ Công Cụ Tính Toán Miễn Phí
+          </h2>
+          <p className="text-slate-500 text-xs sm:text-sm max-w-lg mx-auto">
+            Một phần trong hệ sinh thái sản phẩm HowDoI. Chọn công cụ để tính toán ngay:
+          </p>
+        </div>
+
+        {/* Tab Controls */}
         <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-slate-200/70 rounded-2xl max-w-2xl mx-auto">
           <button
             type="button"
             onClick={() => setActiveTab('laikep')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
               activeTab === 'laikep'
-                ? 'bg-white text-emerald-800 shadow-md scale-100'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                ? 'bg-white text-emerald-800 shadow-md'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <TrendingUp className="w-4 h-4 text-emerald-600" />
@@ -141,10 +279,10 @@ export default function HomePage() {
           <button
             type="button"
             onClick={() => setActiveTab('grossnet')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
               activeTab === 'grossnet'
-                ? 'bg-white text-blue-800 shadow-md scale-100'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                ? 'bg-white text-blue-800 shadow-md'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Wallet className="w-4 h-4 text-blue-600" />
@@ -154,10 +292,10 @@ export default function HomePage() {
           <button
             type="button"
             onClick={() => setActiveTab('budget')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
               activeTab === 'budget'
-                ? 'bg-white text-teal-800 shadow-md scale-100'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                ? 'bg-white text-teal-800 shadow-md'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <PieChart className="w-4 h-4 text-teal-600" />
@@ -167,10 +305,10 @@ export default function HomePage() {
           <button
             type="button"
             onClick={() => setActiveTab('loan')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
               activeTab === 'loan'
-                ? 'bg-white text-amber-900 shadow-md scale-100'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                ? 'bg-white text-amber-900 shadow-md'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Building2 className="w-4 h-4 text-amber-600" />
@@ -178,8 +316,8 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Active Calculator Component */}
-        <div className="pt-4 transition-all">
+        {/* Tab Content */}
+        <div className="pt-2">
           {activeTab === 'laikep' && <CompoundInterestCalc />}
           {activeTab === 'grossnet' && <GrossNetCalc />}
           {activeTab === 'budget' && <BudgetCalc />}
@@ -187,102 +325,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. FRANK'S MISSION STORY */}
-      <section id="mission" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-emerald-950/40 relative overflow-hidden">
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Lời tâm sự từ Frank</span>
+      {/* 4. FRANK'S SOLO PHILOSOPHY & TECH STACK */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl space-y-8">
+          <div className="max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-500/30">
+              <Terminal className="w-3.5 h-3.5" />
+              <span>Indie Dev Philosophy</span>
             </div>
-
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug">
-              Tại sao tôi xây dựng HowDoI?
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Tại sao tôi chọn con đường Solo Indie Developer?
             </h2>
-
-            <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
-              <p>
-                Lớn lên tại Việt Nam, tôi chứng kiến quá nhiều người thân và bạn bè rơi vào căng thẳng vì tiền bạc. Chúng ta được dạy cách giải tích phân, làm thơ, nhưng không ai dạy chúng ta cách quản lý một tháng lương 10 triệu, cách bảo vệ gia đình trước bẫy nợ tín dụng, hay làm thế nào để tiền tiết kiệm không bị lạm phát ăn mòn.
-              </p>
-              <p>
-                Mạng xã hội tràn ngập những lời hứa hẹn làm giàu sau một đêm, các nhóm 'phím lệnh', các dự án cam kết lãi suất phi thực tế. Kết quả là nhiều người mất trắng số tiền mồ hôi nước mắt và càng sợ hãi tài chính hơn.
-              </p>
-              <p className="text-emerald-300 font-semibold">
-                HowDoI ra đời để trở thành một điểm tựa đáng tin cậy. Ở đây không có thuật ngữ đao to búa lớn, không có lừa dối, chỉ có sự thật, toán học minh bạch và sự đồng cảm.
-              </p>
-            </div>
-
-            <div className="pt-4 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center font-bold text-white text-lg">
-                F
-              </div>
-              <div>
-                <span className="font-bold text-white block">Frank</span>
-                <span className="text-xs text-slate-400">Người sáng lập HowDoI & Kỹ sư sản phẩm</span>
-              </div>
-            </div>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Tôi tin vào sức mạnh của sự tinh gọn. Khi một kỹ sư làm chủ toàn bộ quy trình từ ý tưởng, thiết kế UI/UX, viết code front-end/back-end đến hỗ trợ người dùng, sản phẩm sẽ được tạo ra với sự thấu hiểu sâu sắc nhất mà không bị phân mảnh qua các tầng họp hành báo cáo.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* 4. FEATURED GUIDES */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-              Cẩm Nang Thực Chiến
+          <div className="pt-4 border-t border-slate-800 space-y-3">
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+              Vũ Khí Công Nghệ (Tech Stack Của Frank)
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
-              Bài Viết Mới Nhất Dành Cho Bạn
-            </h2>
+            <div className="flex flex-wrap gap-2 text-xs">
+              <span className="px-3 py-1.5 bg-slate-800 text-emerald-400 font-mono rounded-lg border border-slate-700">
+                Swift / SwiftUI (iOS)
+              </span>
+              <span className="px-3 py-1.5 bg-slate-800 text-cyan-400 font-mono rounded-lg border border-slate-700">
+                Flutter (Cross-platform)
+              </span>
+              <span className="px-3 py-1.5 bg-slate-800 text-white font-mono rounded-lg border border-slate-700">
+                Next.js 15 (React 19)
+              </span>
+              <span className="px-3 py-1.5 bg-slate-800 text-blue-400 font-mono rounded-lg border border-slate-700">
+                TypeScript
+              </span>
+              <span className="px-3 py-1.5 bg-slate-800 text-teal-400 font-mono rounded-lg border border-slate-700">
+                Tailwind CSS
+              </span>
+              <span className="px-3 py-1.5 bg-slate-800 text-amber-400 font-mono rounded-lg border border-slate-700">
+                Python / Anaconda
+              </span>
+              <span className="px-3 py-1.5 bg-slate-800 text-rose-400 font-mono rounded-lg border border-slate-700">
+                SQLite / Supabase
+              </span>
+            </div>
           </div>
-          <Link
-            href="/huong-dan"
-            className="text-xs sm:text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5"
-          >
-            <span>Xem tất cả bài viết</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {GUIDES.slice(0, 3).map((guide) => (
-            <article
-              key={guide.slug}
-              className="bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between hover:border-emerald-300 hover:shadow-lg transition-all group"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
-                    {guide.category}
-                  </span>
-                  <span className="text-slate-400">{guide.readTime}</span>
-                </div>
-                <h3 className="font-bold text-slate-900 text-lg group-hover:text-emerald-700 transition-colors leading-snug">
-                  <Link href={`/huong-dan/${guide.slug}`}>{guide.title}</Link>
-                </h3>
-                <p className="text-xs text-slate-500 line-clamp-3 leading-relaxed">
-                  {guide.excerpt}
-                </p>
-              </div>
-
-              <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span className="text-slate-400 font-medium">{guide.date}</span>
-                <Link
-                  href={`/huong-dan/${guide.slug}`}
-                  className="font-semibold text-emerald-700 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
-                >
-                  <span>Đọc tiếp</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 
-      {/* 5. NEWSLETTER & IOS APP WAITLIST */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 5. NEWSLETTER / FOLLOW MY JOURNEY */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <NewsletterWaitlist />
       </section>
     </div>

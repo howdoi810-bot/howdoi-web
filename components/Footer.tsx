@@ -1,105 +1,84 @@
 import React from 'react';
 import Link from 'next/link';
-import { Compass, Heart, ShieldAlert, Mail } from 'lucide-react';
+import { Mail, Heart, Terminal, Shield, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-400 border-t border-slate-900 mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          {/* Brand Info */}
-          <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
-                <Compass className="w-5 h-5" />
+    <footer className="bg-white border-t border-slate-200 mt-24 text-slate-500 text-xs">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Brand Col */}
+          <div className="md:col-span-6 space-y-3">
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs">
+                F
               </div>
-              <span className="font-extrabold text-xl tracking-tight text-white">
-                HowDoI<span className="text-emerald-500">.vn</span>
-              </span>
+              <span className="font-bold text-slate-900 text-sm">Frank • Indie Maker</span>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Được sáng lập bởi <strong>Frank</strong> với niềm tin rằng: bất kỳ người Việt nào cũng xứng đáng được tiếp cận với kiến thức tài chính minh bạch, bình dị và không còn phải lo âu về tiền bạc mỗi ngày.
+            <p className="text-slate-500 leading-relaxed max-w-sm">
+              Xây dựng các ứng dụng di động và công cụ web tinh gọn, giải quyết các nhu cầu thiết thực trong cuộc sống với tinh thần tự do và độc lập.
             </p>
-            <div className="flex items-center gap-2 text-xs text-slate-500 pt-2">
-              <span>Made with</span>
-              <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-              <span>cho cộng đồng người Việt toàn cầu</span>
-            </div>
+            <p className="text-slate-400 text-[11px] pt-1">
+              Based in Vietnam • Crafting for the world
+            </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200">Công cụ tính</h4>
-            <ul className="space-y-2 text-sm">
+          {/* Quick Nav Col */}
+          <div className="md:col-span-3 space-y-2.5">
+            <h4 className="font-semibold text-slate-800 text-xs uppercase tracking-wider">Hệ Sinh Thái</h4>
+            <ul className="space-y-2">
               <li>
-                <Link href="/#calculators" className="hover:text-emerald-400 transition-colors">
-                  Tính Lãi Kép & Đầu Tư
-                </Link>
+                <a href="#products" className="hover:text-emerald-700 transition-colors">
+                  Cho Con (iOS App)
+                </a>
               </li>
               <li>
-                <Link href="/#calculators" className="hover:text-emerald-400 transition-colors">
-                  Tính Lương Gross sang Net 2026
-                </Link>
+                <a href="#tools" className="hover:text-emerald-700 transition-colors">
+                  HowDoI Finance Suite
+                </a>
               </li>
               <li>
-                <Link href="/#calculators" className="hover:text-emerald-400 transition-colors">
-                  Quy tắc Quản lý 50/30/20
-                </Link>
-              </li>
-              <li>
-                <Link href="/#calculators" className="hover:text-emerald-400 transition-colors">
-                  Tính Vay Mua Nhà Trả Góp
+                <Link href="/huong-dan" className="hover:text-emerald-700 transition-colors">
+                  Bài viết & Cẩm nang
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Guides Links */}
-          <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200">Cẩm nang nổi bật</h4>
-            <ul className="space-y-2 text-sm">
+          {/* App Store & Legal Col */}
+          <div className="md:col-span-3 space-y-2.5">
+            <h4 className="font-semibold text-slate-800 text-xs uppercase tracking-wider">Apple App Store</h4>
+            <ul className="space-y-2">
               <li>
-                <Link href="/huong-dan/quy-khan-cap-3-6-thang" className="hover:text-emerald-400 transition-colors">
-                  Xây dựng quỹ khẩn cấp 3–6 tháng
+                <Link href="/support" className="hover:text-emerald-700 transition-colors flex items-center gap-1">
+                  <span>Trung tâm Hỗ trợ (Support URL)</span>
+                  <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
-                <Link href="/huong-dan/phan-bo-luong-10-15-trieu" className="hover:text-emerald-400 transition-colors">
-                  Phân bổ lương 10–15 triệu hiệu quả
+                <Link href="/privacy" className="hover:text-emerald-700 transition-colors flex items-center gap-1">
+                  <span>Quyền riêng tư (Privacy Policy)</span>
+                  <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
-                <Link href="/huong-dan/lai-kep-ky-quan-cho-nguoi-tre" className="hover:text-emerald-400 transition-colors">
-                  Sức mạnh lãi kép cho người trẻ
-                </Link>
-              </li>
-              <li>
-                <Link href="/huong-dan/5-bay-tai-chinh-lua-dao-pho-bien" className="hover:text-emerald-400 transition-colors">
-                  5 bẫy tài chính & lừa đảo phổ biến
-                </Link>
+                <a href="mailto:evolvetech8@outlook.com" className="hover:text-emerald-700 transition-colors">
+                  Liên hệ: evolvetech8@outlook.com
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Disclaimer & Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-slate-900 text-xs text-slate-500 space-y-3">
-          <div className="flex items-start gap-2 bg-slate-900/60 p-4 rounded-xl border border-slate-800/80">
-            <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-            <p className="leading-relaxed">
-              <strong>Tuyên bố miễn trừ trách nhiệm:</strong> Mọi nội dung và công cụ trên <em>howdoi.id.vn</em> được xây dựng hoàn toàn vì mục đích giáo dục và tham khảo kiến thức tài chính cá nhân. HowDoI không phải là tổ chức tư vấn đầu tư được cấp phép và không chịu trách nhiệm cho các quyết định tài chính cá nhân của độc giả.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-4">
-            <p>© {new Date().getFullYear()} HowDoI (howdoi.id.vn). Đã đăng ký bản quyền.</p>
-            <div className="flex gap-4">
-              <span>Độc lập</span>
-              <span>•</span>
-              <span>Minh bạch</span>
-              <span>•</span>
-              <span>Không phím hàng</span>
-            </div>
+        {/* Bottom Bar */}
+        <div className="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-slate-400">
+          <p>© {new Date().getFullYear()} Frank (howdoi.id.vn). All rights reserved.</p>
+          <div className="flex items-center gap-2">
+            <span>Solo Builder</span>
+            <span>•</span>
+            <span>No VC</span>
+            <span>•</span>
+            <span>100% Bootstrapped</span>
           </div>
         </div>
       </div>

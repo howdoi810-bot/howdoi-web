@@ -2,67 +2,76 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Compass, Calculator, BookOpen, Smartphone, Menu, X, ShieldCheck } from 'lucide-react';
+import { Terminal, Layers, Calculator, BookOpen, HelpCircle, Menu, X, Mail, Sparkles } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 sm:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-              <Compass className="w-6 h-6" />
+          {/* Logo / Indie Identity */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-emerald-600 transition-colors">
+              F
             </div>
             <div>
-              <span className="font-extrabold text-xl tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors">
-                HowDoI<span className="text-emerald-600">.vn</span>
-              </span>
-              <span className="block text-[10px] uppercase font-semibold tracking-wider text-slate-500">
-                Tài chính cá nhân thực chiến
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  Frank
+                </span>
+                <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 rounded-full border border-emerald-200/60">
+                  Indie Maker
+                </span>
+              </div>
+              <span className="block text-[11px] text-slate-500 font-medium -mt-0.5">
+                howdoi.id.vn • Product Studio
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
             <Link
-              href="/#calculators"
-              className="text-sm font-medium text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
+              href="/#products"
+              className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
             >
-              <Calculator className="w-4 h-4 text-emerald-600" />
+              <Layers className="w-4 h-4 text-slate-400" />
+              Sản phẩm
+            </Link>
+            <Link
+              href="/#tools"
+              className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
+            >
+              <Calculator className="w-4 h-4 text-slate-400" />
               Công cụ tính
             </Link>
             <Link
               href="/huong-dan"
-              className="text-sm font-medium text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
+              className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
             >
-              <BookOpen className="w-4 h-4 text-teal-600" />
-              Cẩm nang & Bài viết
+              <BookOpen className="w-4 h-4 text-slate-400" />
+              Bài viết
             </Link>
             <Link
-              href="/#mission"
-              className="text-sm font-medium text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
+              href="/support"
+              className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
             >
-              <ShieldCheck className="w-4 h-4 text-blue-600" />
-              Sứ mệnh
+              <HelpCircle className="w-4 h-4 text-slate-400" />
+              Hỗ trợ App (Support)
             </Link>
           </nav>
 
-          {/* Desktop CTA: iOS App waitlist */}
-          <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="/#ios-app"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow transition-all hover:scale-105"
+          {/* Desktop Contact CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="mailto:evolvetech8@outlook.com"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-semibold shadow-sm transition-all hover:scale-105"
             >
-              <Smartphone className="w-4 h-4 text-emerald-400" />
-              <span>Sắp có trên iOS</span>
-              <span className="px-1.5 py-0.5 text-[9px] bg-emerald-500 text-slate-950 font-bold rounded-full uppercase">
-                Early
-              </span>
-            </Link>
+              <Mail className="w-3.5 h-3.5" />
+              <span>Gửi thư cho Frank</span>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -83,37 +92,44 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3">
           <Link
-            href="/#calculators"
+            href="/#products"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
           >
-            <Calculator className="w-4 h-4 text-emerald-600" />
-            Công cụ tính tài chính
+            <Layers className="w-4 h-4 text-slate-400" />
+            Sản phẩm & Ứng dụng
+          </Link>
+          <Link
+            href="/#tools"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
+          >
+            <Calculator className="w-4 h-4 text-slate-400" />
+            Công cụ tính miễn phí
           </Link>
           <Link
             href="/huong-dan"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
           >
-            <BookOpen className="w-4 h-4 text-teal-600" />
-            Cẩm nang & Bài viết
+            <BookOpen className="w-4 h-4 text-slate-400" />
+            Bài viết & Cẩm nang
           </Link>
           <Link
-            href="/#mission"
+            href="/support"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
           >
-            <ShieldCheck className="w-4 h-4 text-blue-600" />
-            Sứ mệnh của Frank
+            <HelpCircle className="w-4 h-4 text-slate-400" />
+            Hỗ trợ App (Support Portal)
           </Link>
-          <Link
-            href="/#ios-app"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center justify-center gap-2 w-full py-2.5 mt-2 rounded-xl bg-emerald-600 text-white text-sm font-semibold shadow"
+          <a
+            href="mailto:evolvetech8@outlook.com"
+            className="flex items-center justify-center gap-2 w-full py-2.5 mt-2 rounded-xl bg-slate-900 text-white text-sm font-semibold shadow"
           >
-            <Smartphone className="w-4 h-4" />
-            Đăng ký trải nghiệm iOS App
-          </Link>
+            <Mail className="w-4 h-4" />
+            Gửi email tới Frank
+          </a>
         </div>
       )}
     </header>

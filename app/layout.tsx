@@ -11,35 +11,34 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HowDoI.vn — Tiếng Nói Độc Lập Về Tài Chính Cá Nhân Việt Nam",
+  title: "Frank — Solo Indie Developer & Product Maker",
   description:
-    "Học cách làm chủ tiền bạc, xóa bỏ nỗi sợ tài chính và sống tự do hơn. Công cụ tính lãi kép, lương Gross-Net, quản lý ngân sách 50/30/20 và cẩm nang thực chiến từ Frank.",
+    "Trang cá nhân và hệ sinh thái sản phẩm của Frank — Nhà phát triển độc lập (Indie Developer). Tác giả ứng dụng Cho Con (iOS) và bộ công cụ HowDoI.",
   metadataBase: new URL("https://howdoi.id.vn"),
   keywords: [
-    "tài chính cá nhân",
-    "công cụ tính lãi kép",
-    "tính lương gross sang net 2026",
-    "quy tắc 50 30 20",
-    "quản lý tài chính cá nhân",
-    "đầu tư tích lũy",
-    "howdoi",
-    "howdoi id vn",
-    "Frank tài chính",
+    "Frank indie developer",
+    "Frank solo maker",
+    "Cho Con app iOS",
+    "HowDoI",
+    "howdoi.id.vn",
+    "lập trình viên độc lập",
+    "indie hacker vietnam",
+    "iOS developer",
   ],
-  authors: [{ name: "Frank (HowDoI)" }],
+  authors: [{ name: "Frank (EvolveTech / HowDoI)" }],
   openGraph: {
-    title: "HowDoI.vn — Tiếng Nói Độc Lập Về Tài Chính Cá Nhân Việt Nam",
+    title: "Frank — Solo Indie Developer & Product Maker",
     description:
-      "Công cụ tính tài chính chuẩn xác và cẩm nang thực tế giúp người Việt kiểm soát đồng tiền và xây dựng sự thịnh vượng bền vững.",
+      "Tự tay thiết kế và phát triển các sản phẩm công nghệ tinh gọn, giải quyết các vấn đề thực tế trong cuộc sống.",
     url: "https://howdoi.id.vn",
-    siteName: "HowDoI Tài Chính",
+    siteName: "Frank Indie Developer",
     locale: "vi_VN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HowDoI.vn — Tài Chính Cá Nhân Dành Cho Người Việt",
-    description: "Công cụ tính lãi kép, lương Net, ngân sách và cẩm nang thực chiến.",
+    title: "Frank — Solo Indie Developer & Product Maker",
+    description: "Building focused, useful software for everyday life.",
   },
 };
 
