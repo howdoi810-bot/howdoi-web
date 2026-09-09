@@ -145,17 +145,17 @@ export const translations: Record<Language, Translations> = {
       noResults: 'Không tìm thấy dự án phù hợp với bộ lọc.',
     },
     hero: {
-      badge: 'Frank • Solo Indie Developer',
-      titleStart: 'I design, code & ship',
-      titleGradient: 'useful software',
-      titleEnd: 'for everyday life.',
+      badge: 'Frank • Lập trình viên độc lập',
+      titleStart: 'Tự thiết kế, lập trình & phát hành',
+      titleGradient: 'phần mềm hữu ích',
+      titleEnd: 'cho cuộc sống hàng ngày.',
       subtitle:
         'Chào bạn, tôi là Frank. Tôi tự tay lập trình và vận hành các ứng dụng di động & công cụ web độc lập. Không nhà đầu tư, không bộ máy cồng kềnh — chỉ tập trung giải quyết đúng vấn đề và mang lại giá trị thực tế cho người dùng.',
       exploreBtn: 'Xem các sản phẩm đã phát hành',
       toolsBtn: 'Dùng thử bộ công cụ miễn phí',
-      stat1Label: 'Solo Bootstrapped',
-      stat2Label: 'Cross-Platform',
-      stat3Label: 'Bảo mật dữ liệu',
+      stat1Label: 'Tự thân phát triển',
+      stat2Label: 'Đa nền tảng',
+      stat3Label: 'Bảo mật & Ưu tiên Offline',
     },
     products: {
       badge: 'Danh Mục Sản Phẩm',
@@ -166,27 +166,27 @@ export const translations: Record<Language, Translations> = {
         title: 'HowDoI Finance Suite',
         description:
           'Bộ công cụ tính toán tài chính cá nhân dành cho người Việt: mô phỏng lãi kép với biểu đồ tăng trưởng, chuyển đổi lương Gross sang Net chuẩn luật 2026, lập ngân sách 50/30/20 và tính toán vay ngân hàng.',
-        status: '🟢 Live • Free Web Platform',
+        status: '🟢 Đang hoạt động • Web miễn phí',
         cta: 'Dùng ngay bên dưới',
         guideLink: 'Đọc cẩm nang tài chính',
       },
       product2: {
-        type: 'Mobile & Productivity Lab',
-        title: 'Personal Apps & Micro-Tools',
+        type: 'Ứng dụng Di động & Tiện ích',
+        title: 'Ứng Dụng Cá Nhân & Micro-Tools',
         description:
           'Các ứng dụng di động iOS bản địa (Native iOS) và công cụ tiện ích hỗ trợ năng suất cá nhân, quản lý công việc và cuộc sống theo triết lý tinh gọn, ưu tiên lưu trữ offline và bảo vệ quyền riêng tư 100%.',
-        status: '⚡ In Development • iOS & Web',
+        status: '⚡ Đang phát triển • iOS & Web',
         cta: 'Hỗ Trợ Ứng Dụng (Support Portal)',
         privacyLink: 'Chính sách bảo mật',
       },
       lab: {
-        title: "What's next? Đang ấp ủ sản phẩm tiếp theo...",
+        title: 'Đang ấp ủ sản phẩm tiếp theo...',
         desc: 'Thử nghiệm các tiện ích AI và micro-tools hỗ trợ năng suất cá nhân.',
         cta: 'Đề xuất ý tưởng cho Frank →',
       },
     },
     tools: {
-      badge: 'Interactive Tools',
+      badge: 'Công Cụ Tương Tác',
       title: 'Bộ Công Cụ Tính Toán Miễn Phí',
       subtitle: 'Một phần trong hệ sinh thái sản phẩm HowDoI. Chọn công cụ để tính toán ngay:',
       tab1: 'Lãi Kép & Tích Lũy',
@@ -195,14 +195,14 @@ export const translations: Record<Language, Translations> = {
       tab4: 'Vay Mua Nhà / Xe',
     },
     philosophy: {
-      badge: 'Indie Dev Philosophy',
+      badge: 'Triết Lý Solo Maker',
       title: 'Tại sao tôi chọn con đường Solo Indie Developer?',
       text:
         'Tôi tin vào sức mạnh của sự tinh gọn. Khi một kỹ sư làm chủ toàn bộ quy trình từ ý tưởng, thiết kế UI/UX, viết code front-end/back-end đến hỗ trợ người dùng, sản phẩm sẽ được tạo ra với sự thấu hiểu sâu sắc nhất mà không bị phân mảnh qua các tầng họp hành báo cáo.',
       stackTitle: 'Vũ Khí Công Nghệ (Tech Stack Của Frank)',
     },
     support: {
-      badge: 'Apple App Store Official Support Portal',
+      badge: 'Cổng Hỗ Trợ Chính Thức Apple App Store',
       title: 'Trung Tâm Hỗ Trợ Ứng Dụng Di Động',
       subtitle:
         'Trang hỗ trợ chính thức cho tất cả các ứng dụng trên hệ sinh thái iOS của Frank & EvolveTech. Chúng tôi luôn ở đây để giúp bạn có trải nghiệm tốt nhất.',
