@@ -14,6 +14,7 @@ import {
   Terminal,
   Code2,
   Cpu,
+  FolderKanban,
 } from 'lucide-react';
 
 import CompoundInterestCalc from '@/components/calculators/CompoundInterestCalc';
@@ -25,7 +26,7 @@ import { useLanguage } from '@/context/LanguageContext';
 
 export default function IndieHomePage() {
   const [activeTab, setActiveTab] = useState<'laikep' | 'grossnet' | 'budget' | 'loan'>('laikep');
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
     <div className="space-y-24 pb-20">
@@ -240,6 +241,37 @@ export default function IndieHomePage() {
           >
             {t.products.lab.cta}
           </a>
+        </div>
+
+        {/* Pieter Levels-style Projects Page Teaser */}
+        <div className="p-6 rounded-3xl bg-emerald-50/80 border border-emerald-200/90 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-xs">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center shrink-0 shadow-md">
+              <FolderKanban className="w-6 h-6 text-emerald-400" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="text-base font-extrabold text-slate-900">
+                  {lang === 'vi' ? 'Toàn bộ hành trình dự án (Indie Resume)' : 'Complete Indie Project List & Resume'}
+                </h4>
+                <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-200/70 text-emerald-900 rounded-full">
+                  11+ Projects
+                </span>
+              </div>
+              <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                {lang === 'vi'
+                  ? 'Xem danh sách tất cả các web app, app iOS, bot và thử nghiệm tôi từng làm từ 2023 đến nay, bao gồm tỷ lệ thành công/thất bại và bài học rút ra.'
+                  : 'Explore every web app, iOS application, and side experiment built from 2023 to present, with candid success/failure breakdown.'}
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/projects"
+            className="text-xs font-bold px-5 py-2.5 bg-slate-900 text-white hover:bg-emerald-600 rounded-xl shadow-sm transition-all hover:scale-105 shrink-0 flex items-center gap-2"
+          >
+            <span>{t.nav.allProjects}</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 

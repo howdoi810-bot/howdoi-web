@@ -33,12 +33,17 @@ export default function Footer() {
             <h4 className="font-semibold text-slate-800 text-xs uppercase tracking-wider">{t.footer.ecosystem}</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#products" className="hover:text-emerald-700 transition-colors">
+                <a href="/#products" className="hover:text-emerald-700 transition-colors">
                   {t.nav.products}
                 </a>
               </li>
               <li>
-                <a href="#tools" className="hover:text-emerald-700 transition-colors">
+                <Link href="/projects" className="hover:text-emerald-700 transition-colors font-medium">
+                  {t.nav.allProjects}
+                </Link>
+              </li>
+              <li>
+                <a href="/#tools" className="hover:text-emerald-700 transition-colors">
                   HowDoI Finance Suite
                 </a>
               </li>

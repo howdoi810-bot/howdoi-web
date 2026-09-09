@@ -4,10 +4,30 @@ export interface Translations {
   nav: {
     products: string;
     tools: string;
+    allProjects: string;
     writing: string;
     support: string;
     contact: string;
     role: string;
+  };
+  projects: {
+    badge: string;
+    title: string;
+    views: string;
+    updatedDate: string;
+    intro: string;
+    statsHeading: string;
+    filterAll: string;
+    searchPlaceholder: string;
+    totalProjects: string;
+    activeProjects: string;
+    successRate: string;
+    backToHome: string;
+    whatILearned: string;
+    openLink: string;
+    appStoreBadge: string;
+    sourceCode: string;
+    noResults: string;
   };
   hero: {
     badge: string;
@@ -98,10 +118,31 @@ export const translations: Record<Language, Translations> = {
     nav: {
       products: 'Sản phẩm',
       tools: 'Công cụ tính',
+      allProjects: 'Tất cả dự án',
       writing: 'Bài viết',
       support: 'Hỗ trợ App',
       contact: 'Gửi thư cho Frank',
       role: 'Indie Maker',
+    },
+    projects: {
+      badge: 'Bản Thống Kê Dự Án • Indie Resume',
+      title: 'Tất cả các dự án tôi từng làm',
+      views: '12,480 lượt xem',
+      updatedDate: 'Cập nhật tháng 3, 2026',
+      intro:
+        'Dưới đây là danh sách toàn bộ các website, ứng dụng iOS, công cụ micro-SaaS và thử nghiệm cá nhân mà tôi từng xây dựng. Là một solo maker, tôi thích lưu trữ lại hành trình này như một cuốn portfolio chân thực nhất. Nó phản ánh đúng bản chất của Indie Hacking: tỷ lệ thất bại rất cao, nhưng mỗi lần bấm nút Ship là một lần trưởng thành vượt bậc.',
+      statsHeading: 'Tỷ lệ phân bổ & Trạng thái dự án',
+      filterAll: 'Tất cả',
+      searchPlaceholder: 'Tìm kiếm dự án theo tên, công nghệ, hoặc từ khóa...',
+      totalProjects: 'Tổng dự án',
+      activeProjects: 'Đang hoạt động',
+      successRate: 'Tỷ lệ thành công',
+      backToHome: '← Về trang chủ',
+      whatILearned: 'Ghi chú & Bài học:',
+      openLink: 'Truy cập sản phẩm',
+      appStoreBadge: 'Apple App Store',
+      sourceCode: 'Mã nguồn',
+      noResults: 'Không tìm thấy dự án phù hợp với bộ lọc.',
     },
     hero: {
       badge: 'Frank • Solo Indie Developer',
@@ -196,10 +237,31 @@ export const translations: Record<Language, Translations> = {
     nav: {
       products: 'Products',
       tools: 'Free Tools',
+      allProjects: 'All Projects',
       writing: 'Writing',
       support: 'App Support',
       contact: 'Email Frank',
       role: 'Indie Maker',
+    },
+    projects: {
+      badge: 'Project Scoreboard • Indie Resume',
+      title: 'List of all my projects ever',
+      views: '12,480 views',
+      updatedDate: 'Updated March, 2026',
+      intro:
+        "Here is a comprehensive list of all web apps, iOS applications, micro-tools, and side experiments I have ever built. As a solo maker, I track this journey as an honest, unfiltered resume. It showcases the reality of indie hacking: high failure rate, but every project shipped is a massive leap forward in learning and craftsmanship.",
+      statsHeading: 'Status Distribution & Breakdown',
+      filterAll: 'All',
+      searchPlaceholder: 'Search projects by name, technology, or keywords...',
+      totalProjects: 'Total Projects',
+      activeProjects: 'Active Projects',
+      successRate: 'Success Rate',
+      backToHome: '← Back to Home',
+      whatILearned: 'Notes & Post-Mortem:',
+      openLink: 'Visit Project',
+      appStoreBadge: 'Apple App Store',
+      sourceCode: 'Source Code',
+      noResults: 'No projects match your current filter.',
     },
     hero: {
       badge: 'Frank • Solo Indie Developer',

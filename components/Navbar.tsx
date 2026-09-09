@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Layers, Calculator, BookOpen, HelpCircle, Menu, X, Mail, Globe } from 'lucide-react';
+import { Layers, Calculator, BookOpen, HelpCircle, Menu, X, Mail, Globe, FolderKanban } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navbar() {
@@ -34,13 +34,20 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-6">
             <Link
               href="/#products"
               className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
             >
               <Layers className="w-4 h-4 text-slate-400" />
               {t.nav.products}
+            </Link>
+            <Link
+              href="/projects"
+              className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
+            >
+              <FolderKanban className="w-4 h-4 text-slate-400" />
+              {t.nav.allProjects}
             </Link>
             <Link
               href="/#tools"
@@ -154,6 +161,14 @@ export default function Navbar() {
           >
             <Layers className="w-4 h-4 text-slate-400" />
             {t.nav.products}
+          </Link>
+          <Link
+            href="/projects"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700"
+          >
+            <FolderKanban className="w-4 h-4 text-slate-400" />
+            {t.nav.allProjects}
           </Link>
           <Link
             href="/#tools"
