@@ -134,7 +134,7 @@ export default function UniversalPrivacyPage() {
               <p>Mọi thắc mắc hoặc yêu cầu liên quan đến chính sách bảo mật này, xin vui lòng gửi thư cho chúng tôi:</p>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs sm:text-sm space-y-1">
                 <p><strong>Nhà phát triển:</strong> Frank (EvolveTech)</p>
-                <p><strong>Email:</strong> evolvetech8@outlook.com</p>
+                <p><strong>Email:</strong> archonic88@gmail.com</p>
                 <p><strong>Trang web:</strong> https://howdoi.id.vn</p>
               </div>
             </section>
@@ -180,7 +180,7 @@ export default function UniversalPrivacyPage() {
               <p>For questions or privacy requests, please contact us directly:</p>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs sm:text-sm space-y-1">
                 <p><strong>Developer:</strong> Frank (EvolveTech)</p>
-                <p><strong>Email:</strong> evolvetech8@outlook.com</p>
+                <p><strong>Email:</strong> archonic88@gmail.com</p>
                 <p><strong>Website:</strong> https://howdoi.id.vn</p>
               </div>
             </section>

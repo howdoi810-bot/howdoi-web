@@ -236,7 +236,7 @@ export default function IndieHomePage() {
             </div>
           </div>
           <a
-            href="mailto:evolvetech8@outlook.com"
+            href="mailto:archonic88@gmail.com"
             className="text-xs font-bold px-4 py-2 bg-white rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 shrink-0 transition-colors"
           >
             {t.products.lab.cta}

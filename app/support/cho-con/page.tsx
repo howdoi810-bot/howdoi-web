@@ -43,7 +43,7 @@ export default function ChoConSupportPage() {
     },
     {
       q: 'Tôi muốn đóng góp thêm các món đồ sơ sinh cần thiết hoặc báo lỗi thì làm thế nào?',
-      a: 'Chúng tôi rất trân trọng mọi ý kiến đóng góp từ các ba mẹ! Bạn có thể điền vào biểu mẫu liên hệ bên dưới hoặc gửi email trực tiếp tới evolvetech8@outlook.com. Mọi phản hồi sẽ được ghi nhận để cải tiến trong các bản cập nhật sắp tới.',
+      a: 'Chúng tôi rất trân trọng mọi ý kiến đóng góp từ các ba mẹ! Bạn có thể điền vào biểu mẫu liên hệ bên dưới hoặc gửi email trực tiếp tới archonic88@gmail.com. Mọi phản hồi sẽ được ghi nhận để cải tiến trong các bản cập nhật sắp tới.',
     },
     {
       q: 'Ứng dụng có thu phí định kỳ (subscription) không?',
@@ -84,7 +84,7 @@ export default function ChoConSupportPage() {
       setMessage('');
     } catch (err: any) {
       setStatus('error');
-      setFeedbackMsg(err.message || 'Có lỗi xảy ra, vui lòng gửi email trực tiếp tới evolvetech8@outlook.com.');
+      setFeedbackMsg(err.message || 'Có lỗi xảy ra, vui lòng gửi email trực tiếp tới archonic88@gmail.com.');
     }
   };
 
@@ -112,7 +112,7 @@ export default function ChoConSupportPage() {
           <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-rose-100">
             <span className="flex items-center gap-1.5">
               <Mail className="w-4 h-4 text-white" />
-              <span>Email: evolvetech8@outlook.com</span>
+              <span>Email: archonic88@gmail.com</span>
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">

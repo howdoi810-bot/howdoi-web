@@ -541,7 +541,7 @@ export default function ProjectsPage() {
             </p>
           </div>
           <a
-            href="mailto:evolvetech8@outlook.com"
+            href="mailto:archonic88@gmail.com"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg transition-all hover:scale-105 shrink-0"
           >
             <Mail className="w-4 h-4" />

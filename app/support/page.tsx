@@ -60,7 +60,7 @@ export default function UniversalSupportPage() {
   const faqs = lang === 'vi' ? [
     {
       q: 'Làm thế nào để nhận được hỗ trợ nhanh nhất?',
-      a: 'Bạn có thể điền thông tin vào biểu mẫu trực tuyến bên dưới hoặc gửi email trực tiếp tới evolvetech8@outlook.com. Chúng tôi cam kết phản hồi tất cả yêu cầu hỗ trợ trong vòng 24 giờ làm việc.',
+      a: 'Bạn có thể điền thông tin vào biểu mẫu trực tuyến bên dưới hoặc gửi email trực tiếp tới archonic88@gmail.com. Chúng tôi cam kết phản hồi tất cả yêu cầu hỗ trợ trong vòng 24 giờ làm việc.',
     },
     {
       q: 'Dữ liệu cá nhân của tôi trong các ứng dụng được lưu trữ và bảo mật như thế nào?',
@@ -81,7 +81,7 @@ export default function UniversalSupportPage() {
   ] : [
     {
       q: 'How can I get the fastest customer support?',
-      a: 'You can submit the online ticket form below or email us directly at evolvetech8@outlook.com. We guarantee a personal response within 24 business hours.',
+      a: 'You can submit the online ticket form below or email us directly at archonic88@gmail.com. We guarantee a personal response within 24 business hours.',
     },
     {
       q: 'How is my personal data stored and secured in your apps?',
@@ -138,7 +138,7 @@ export default function UniversalSupportPage() {
       setMessage('');
     } catch (err: any) {
       setStatus('error');
-      setFeedbackMsg(err.message || 'Error occurred. Please email directly to evolvetech8@outlook.com.');
+      setFeedbackMsg(err.message || 'Error occurred. Please email directly to archonic88@gmail.com.');
     }
   };
 
@@ -169,7 +169,7 @@ export default function UniversalSupportPage() {
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2 text-xs text-slate-300">
             <span className="flex items-center gap-1.5">
               <Mail className="w-4 h-4 text-emerald-400" />
-              <span>{t.support.emailLabel}: <strong>evolvetech8@outlook.com</strong></span>
+              <span>{t.support.emailLabel}: <strong>archonic88@gmail.com</strong></span>
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">

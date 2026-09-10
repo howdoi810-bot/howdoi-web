@@ -106,7 +106,7 @@ export default function Navbar() {
 
             {/* Desktop Contact CTA */}
             <a
-              href="mailto:evolvetech8@outlook.com"
+              href="mailto:archonic88@gmail.com"
               className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-semibold shadow-sm transition-all hover:scale-105"
             >
               <Mail className="w-3.5 h-3.5" />
@@ -195,7 +195,7 @@ export default function Navbar() {
             {t.nav.support}
           </Link>
           <a
-            href="mailto:evolvetech8@outlook.com"
+            href="mailto:archonic88@gmail.com"
             className="flex items-center justify-center gap-2 w-full py-2.5 mt-2 rounded-xl bg-slate-900 text-white text-sm font-semibold shadow"
           >
             <Mail className="w-4 h-4" />

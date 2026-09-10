@@ -72,8 +72,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="mailto:evolvetech8@outlook.com" className="hover:text-emerald-700 transition-colors">
-                  evolvetech8@outlook.com
+                <a href="mailto:archonic88@gmail.com" className="hover:text-emerald-700 transition-colors">
+                  archonic88@gmail.com
                 </a>
               </li>
             </ul>
