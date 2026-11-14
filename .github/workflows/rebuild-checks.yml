@@ -13,36 +13,19 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    permissions:
-      contents: write
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       HOWDOI_PUBLIC_RELEASE: 'false'
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
-      - name: Repair compatible dependencies on this owner-authorized feature branch only
-        if: github.event_name == 'push' && github.ref == 'refs/heads/rebuild/english-guides-preview' && github.repository == 'howdoi810-bot/howdoi-web'
-        run: |
-          npm install --package-lock-only --ignore-scripts
-          npm audit --json > npm-audit-before.json || true
-          node -e 'const r=require("./npm-audit-before.json"); console.log("Before repair:", JSON.stringify(r.metadata?.vulnerabilities)); for (const [n,v] of Object.entries(r.vulnerabilities || {})) console.log(n, v.severity, JSON.stringify(v.via));'
-          npm audit fix --package-lock-only --ignore-scripts || echo 'Some findings could not be repaired automatically; the final audit gate will check.'
-          git diff --exit-code -- package.json
-          if ! git diff --quiet -- package-lock.json; then
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add package-lock.json
-            git commit -m 'fix: lock compatible security updates for rebuild preview'
-            git push origin HEAD:rebuild/english-guides-preview
-          fi
-          git rev-parse HEAD
-      - name: Remove checkout credentials before installing dependencies
-        run: git config --local --unset-all http.https://github.com/.extraheader || true
-      - run: npm ci
+      - name: Install exact reviewed dependency lockfile
+        run: npm ci
       - name: Content and renderer tests
         run: npm test
       - run: npm run build
@@ -67,7 +50,6 @@ jobs:
           path: |
             playwright-report/
             test-results/
-            npm-audit-before.json
             npm-audit-after.json
           retention-days: 7
           if-no-files-found: ignore
