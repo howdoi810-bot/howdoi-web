@@ -9,57 +9,21 @@ interface LanguageContextType {
   toggleLang: () => void;
   t: Translations;
 }
-
-const LanguageContext = createContext<LanguageContextType>({
-  lang: 'vi',
-  setLang: () => {},
-  toggleLang: () => {},
-  t: translations.vi,
-});
-
+const LanguageContext = createContext<LanguageContextType>({ lang: 'vi', setLang: () => {}, toggleLang: () => {}, t: translations.vi });
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Language>('vi');
-
   useEffect(() => {
-    // Check saved language preference or browser setting
-    const saved = localStorage.getItem('howdoi_lang') as Language;
-    if (saved === 'vi' || saved === 'en') {
-      setLangState(saved);
-    } else {
-      // Browser language check
-      const browserLang = navigator.language.toLowerCase();
-      if (browserLang.startsWith('en')) {
-        setLangState('en');
-      } else {
-        setLangState('vi');
-      }
-    }
+    // Legacy preference only. New guide-library copy is always English.
+    try {
+      const saved = localStorage.getItem('howdoi_lang');
+      if (saved === 'vi' || saved === 'en') { setLangState(saved); return; }
+    } catch { /* Storage may be unavailable; reading the site must still work. */ }
+    setLangState(navigator.language.toLowerCase().startsWith('en') ? 'en' : 'vi');
   }, []);
-
   const setLang = (newLang: Language) => {
     setLangState(newLang);
-    localStorage.setItem('howdoi_lang', newLang);
+    try { localStorage.setItem('howdoi_lang', newLang); } catch { /* Keep the in-memory preference. */ }
   };
-
-  const toggleLang = () => {
-    const next = lang === 'vi' ? 'en' : 'vi';
-    setLang(next);
-  };
-
-  return (
-    <LanguageContext.Provider
-      value={{
-        lang,
-        setLang,
-        toggleLang,
-        t: translations[lang],
-      }}
-    >
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={{ lang, setLang, toggleLang: () => setLang(lang === 'vi' ? 'en' : 'vi'), t: translations[lang] }}>{children}</LanguageContext.Provider>;
 }
-
-export function useLanguage() {
-  return useContext(LanguageContext);
-}
+export function useLanguage() { return useContext(LanguageContext); }

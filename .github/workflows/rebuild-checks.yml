@@ -1,0 +1,57 @@
+name: Rebuild checks
+on:
+  push:
+    branches: [rebuild/english-guides-preview]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: rebuild-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      HOWDOI_PUBLIC_RELEASE: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Lock new dependencies on this owner-authorized feature branch only
+        if: github.event_name == 'push' && github.ref == 'refs/heads/rebuild/english-guides-preview' && github.repository == 'howdoi810-bot/howdoi-web'
+        run: |
+          npm install --package-lock-only --ignore-scripts
+          if ! git diff --quiet -- package-lock.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add package-lock.json
+            git commit -m 'chore: lock rebuild preview dependencies'
+            git push origin HEAD:rebuild/english-guides-preview
+          fi
+      - name: Remove checkout credentials before installing dependencies
+        run: git config --local --unset-all http.https://github.com/.extraheader || true
+      - run: npm ci
+      - name: Content and renderer tests
+        run: npx tsx --tsconfig tsconfig.test.json --test tests/*.test.ts tests/*.test.tsx
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - name: Retain test report and review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rebuild-checks-${{ github.run_id }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+          if-no-files-found: ignore
