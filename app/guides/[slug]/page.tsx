@@ -10,7 +10,9 @@ import { displayDate, getGuide, getPublishedGuides, getPublicSlugs, VERIFICATION
 import { canonical, isPublicRelease } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
-export const dynamicParams = false;
+// Unknown paths reach the explicit notFound below, including when the library is empty.
+// getGuide reads only the compiled approved-public index, never draft source files.
+export const dynamicParams = true;
 export function generateStaticParams() { return getPublicSlugs().map(slug => ({ slug })); }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const guide = getGuide((await params).slug);
@@ -30,7 +32,7 @@ export default async function GuidePage({ params }: Props) {
     {archived && <aside className="hd-notice"><strong>Archived guide.</strong> This URL is preserved for existing readers. These instructions are no longer part of the current guide library and may be outdated.</aside>}
     <dl className="hd-guide-details"><div><dt>Platform</dt><dd>{guide.target_platform}</dd></div><div><dt>Shell</dt><dd>{guide.target_shell}</dd></div><div><dt>Source version</dt><dd>{guide.source_version}</dd></div><div><dt>Sources reviewed</dt><dd><time dateTime={guide.source_reviewed_at}>{displayDate(guide.source_reviewed_at)}</time></dd></div></dl>
     <aside className="hd-notice"><strong>{VERIFICATION_LABELS[guide.verification]}.</strong>{guide.verification === "docs-only" ? " These instructions were checked against the cited documentation. A runtime installation test is not claimed." : guide.verification === "supplied-files-only" ? " This guide is based on supplied materials, without a live freshness check." : " This workflow was tested only within the environment and scope reported below."}{guide.verification === "runtime-tested" && guide.editorial.runtime && <p>Tested {displayDate(guide.editorial.runtime.tested_at)}. Environment: {guide.editorial.runtime.environment}. Scope: {guide.editorial.runtime.scope}.</p>}</aside>
-    <div className="hd-article-actions"><a className="hd-text-link" href={guide.repository} rel="noopener noreferrer">Source repository <span aria-hidden="true">&nearr;</span></a><CopyGuideLink url={url} /></div>
+    <div className="hd-article-actions"><a className="hd-text-link" href={guide.repository} rel="noopener noreferrer">Source repository <span aria-hidden="true">&#8599;</span></a><CopyGuideLink url={url} /></div>
     <Markdown body={guide.body} />
     {!archived && <AdSlot />}
     {!archived && guide.build_with_me && <ServiceCTA source={guide.slug} />}
