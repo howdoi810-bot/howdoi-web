@@ -1,0 +1,55 @@
+name: Rebuild checks
+on:
+  push:
+    branches: [rebuild/english-guides-preview]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: rebuild-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      HOWDOI_PUBLIC_RELEASE: 'false'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install exact reviewed dependency lockfile
+        run: npm ci
+      - name: Content and renderer tests
+        run: npm test
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - name: Dependency audit - reject high and critical findings
+        run: |
+          if npm audit --audit-level=high --json > npm-audit-after.json; then
+            audit_status=0
+          else
+            audit_status=$?
+          fi
+          node -e 'const r=require("./npm-audit-after.json"); if (!r.metadata?.vulnerabilities) throw new Error("Audit returned no usable report"); console.log("Final audit:", JSON.stringify(r.metadata.vulnerabilities)); for (const [n,v] of Object.entries(r.vulnerabilities || {})) console.log(n, v.severity, JSON.stringify(v.via));'
+          exit "$audit_status"
+      - name: Retain test report, audit evidence and review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rebuild-checks-${{ github.run_id }}
+          path: |
+            playwright-report/
+            test-results/
+            npm-audit-after.json
+          retention-days: 7
+          if-no-files-found: ignore

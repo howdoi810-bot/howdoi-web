@@ -1,63 +1,67 @@
-# HowDoI.vn — Tiếng Nói Độc Lập Về Tài Chính Cá Nhân Cho Người Việt
+# HowDoI - guide-library rebuild preview
 
-> *"Giúp người Việt không còn sợ hãi tiền bạc, làm chủ tài chính và sống an tâm hơn."* — Frank
+This branch implements phase 1 of the owner's 2026-11-14 rebuild brief. It keeps the existing Next.js App Router, React, TypeScript and Tailwind stack. It is not an authorization to publish, enable ads, or accept enquiries.
 
-Nền tảng tài chính cá nhân thực chiến kết hợp giữa:
-1. **Web Platform (`howdoi.id.vn`)**: Bộ công cụ tính tài chính tự động (Lãi kép, Lương Gross-Net 2026, Ngân sách 50/30/20, Vay mua nhà) và kho cẩm nang thực chiến.
-2. **Hệ thống Backend & API dùng chung**: Thiết kế sẵn để kết nối trực tiếp với ứng dụng **iOS App** tiếp theo mà Frank sẽ phát hành.
+## Run and check
 
----
+Use Node.js 22 and npm:
 
-## 🛠️ Công Nghệ Sử Dụng
+```bash
+npm ci
+npm run dev
+```
 
-- **Frontend**: Next.js 15 (App Router, React 19, TypeScript)
-- **Styling**: Tailwind CSS, Lucide Icons, Inter Font (hỗ trợ tối ưu tiếng Việt)
-- **Biểu đồ tài chính tương tác**: Recharts
-- **Backend & API**: Next.js Route Handlers (`/api/subscribe`)
-- **Tối ưu SEO**: Metadata động, OpenGraph, JSON-LD Schema
+Open http://localhost:3000. Stop and restart the dev server after changing Markdown; the content index is generated at startup, not watched.
 
----
+```bash
+npm run content:build
+npm test
+npm run build
+npm run typecheck
+npx playwright install chromium
+npm run test:e2e
+npm audit --audit-level=high
+```
 
-## 🚀 Chạy Ứng Dụng Trên Máy Local
+The browser suite starts a local production server. Its report goes to `playwright-report/` and screenshots to `test-results/`. No command here deploys the site. The inherited `npm run lint` script needs a separately configured ESLint setup; do not count it as a passed lint check.
 
-1. Mở terminal tại thư mục này:
-   ```bash
-   cd "/Volumes/SIDE HUSTLE/HOWDOI"
-   ```
-2. Khởi động server phát triển:
-   ```bash
-   npm run dev
-   ```
-3. Mở trình duyệt tại: [http://localhost:3000](http://localhost:3000)
+## What is implemented
 
----
+- English, light-first publication shell, homepage and navigation.
+- Server-rendered `/guides` search with shareable, bounded query parameters and category/platform filters derived only from real published content.
+- Ordinary Markdown plus safe YAML validation, separate editorial approvals, verification labels, publication dates, archived URLs and a sanitized article renderer.
+- Individual code Copy controls, edit-required notices, manual clipboard fallback and Copy guide link.
+- `/build-with-me`, its full proposed project-brief form, and a deliberately closed `POST /api/project-enquiries` boundary.
+- About, editorial policy, contact-availability page, draft website privacy and terms.
+- Canonical metadata, preview noindex and a published-only sitemap after launch approval.
+- Original homepage preserved at `/legacy`; existing articles, projects, support and application privacy routes preserved.
 
-## 📱 Sẵn Sàng Cho Ứng Dụng iOS Của Frank
+The initial library is intentionally empty. No real installation article, author, testimonial or runtime test is invented.
 
-Kiến trúc thư mục và thuật toán tính toán tại `lib/finance-math.ts` được tách biệt hoàn toàn dưới dạng pure TypeScript/JavaScript.
+## Important route adaptation
 
-Khi phát triển ứng dụng di động iOS (Flutter hoặc React Native / Swift):
-- Các thuật toán tính lãi kép, tính thuế TNCN, phân bổ 6 chiếc lọ có thể tái sử dụng 100%.
-- Endpoint `/api/subscribe` và cơ sở dữ liệu Supabase kết nối trực tiếp với ứng dụng iOS qua Supabase SDK mà không cần viết lại backend.
+The existing `/privacy` page describes policies for the owner's iOS/web applications and may be linked from an app store. It remains unchanged. The rebuilt website's separate privacy notice is at `/website-privacy`; new website footer/form links point there. See `docs/MIGRATION.md`.
 
----
+## Publishing
 
-## 🌐 Hướng Dẫn Cấu Hình Tên Miền `howdoi.id.vn` & Bật SSL Miễn Phí
+See `docs/PUBLISHING.md`. Article sources live in `content/guides/*.md`. The editor-owned `content/editorial.json` grants approval to an exact SHA-256 content digest. Drafts are validated but excluded from `generated/public-guides.json`. Runtime-tested publication requires an approved date, environment and scope.
 
-Hiện tại tên miền `howdoi.id.vn` đang trỏ vào Netlify nhưng bị lỗi chứng chỉ SSL (`*.netlify.app`). Để trang web hoạt động mượt mà với ổ khóa xanh an toàn:
+**This GitHub repository is public.** Website exclusion does not make a committed draft private on GitHub. Keep sensitive drafts, HOLD notes, personal details and secrets outside this repository. There is no private-draft web preview in this release.
 
-### Cách 1: Triển khai lên Vercel (Khuyên dùng, 2 phút)
-1. Đẩy mã nguồn lên GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: initial HowDoI personal finance platform"
-   git branch -M main
-   # Đẩy lên repo GitHub của bạn
-   ```
-2. Đăng nhập [Vercel.com](https://vercel.com) -> Chọn **Import Git Repository** -> Bấm **Deploy**.
-3. Vào mục **Settings** -> **Domains** -> Nhập `howdoi.id.vn`.
-4. Mở trang quản trị nhà đăng ký tên miền của bạn (ví dụ: PA Việt Nam, Mắt Bão, Tenten, v.v.):
-   - Thêm bản ghi **A**: Host `@` trỏ tới IP `76.76.21.21`
-   - Thêm bản ghi **CNAME**: Host `www` trỏ tới `cname.vercel-dns.com`
-5. Vercel sẽ tự động cấp chứng chỉ SSL HTTPS miễn phí trong vòng 2 phút.
+## Integration boundaries
+
+The new form is disabled in the UI, and its API always returns HTTP 503 with `success: false`. It does not read, log, store or forward request bodies. This is not a working enquiry delivery service. A provider, approved destination, retention policy, durable rate limiting, idempotency, origin/CSRF handling, server validation and real authorized delivery tests are launch work, not completed features.
+
+Ads and analytics have no active provider or script. `AdSlot` is an intentionally inert integration boundary, not an AdSense implementation or CMP. Enabling advertising requires a separate reviewed implementation; an environment variable alone cannot enable it.
+
+Legacy `/api/subscribe` and `/api/support` are preserved, not repaired or endorsed. Their existing filesystem writes require a hosting-compatible storage review before relying on them. No live legacy form submission was authorized or performed.
+
+## Deployment safety and rollback
+
+`vercel.json` disables automatic Vercel Git deployments specifically for `rebuild/english-guides-preview`. Do not merge, change DNS, activate a public preview, or deploy production without owner approval. The existing canonical setting `https://howdoi.id.vn` is preserved; verify the current apex/www redirect in the hosting account before launch.
+
+`HOWDOI_PUBLIC_RELEASE` defaults to false. The preview is noindex and its sitemap is empty. Noindex is not access control. Do not put sensitive drafts in it.
+
+The maintained CI workflow has read-only repository permission and installs the committed lockfile using `npm ci`. It never commits, deploys or writes to main. It runs unit tests, a Next build, TypeScript checks, Chromium desktop/mobile checks and a dependency audit. The initial lockfile repair history is documented in `docs/CI-NOTES.md`. Verify the actual run results; the presence of tests is not a passing result.
+
+The production baseline before this work is `6de87b6b890ef55a09830e6eed01cceda48ee0ec`. Main is not moved by this implementation. See `docs/HANDOFF.md` for blockers and `docs/MIGRATION.md` for rollback guidance.

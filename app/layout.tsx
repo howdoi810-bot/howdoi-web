@@ -1,61 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Header from "@/components/site/Header";
+import Footer from "@/components/site/Footer";
 import { LanguageProvider } from "@/context/LanguageContext";
-
-const inter = Inter({
-  subsets: ["latin", "vietnamese"],
-  variable: "--font-sans",
-  display: "swap",
-});
+import { SITE, isPublicRelease } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Frank — Solo Indie Developer & Product Maker",
-  description:
-    "Official portfolio and software studio of Frank — Solo Indie Developer. Building simple, useful apps for everyday life.",
-  metadataBase: new URL("https://howdoi.id.vn"),
-  keywords: [
-    "Frank indie developer",
-    "Frank solo maker",
-    "HowDoI",
-    "howdoi.id.vn",
-    "lập trình viên độc lập",
-    "indie hacker vietnam",
-    "iOS developer",
-    "Vietnamese indie developer",
-  ],
-  authors: [{ name: "Frank (EvolveTech / HowDoI)" }],
-  openGraph: {
-    title: "Frank — Solo Indie Developer & Product Maker",
-    description: "Designing, coding & shipping useful software for everyday life.",
-    url: "https://howdoi.id.vn",
-    siteName: "Frank Indie Developer",
-    locale: "vi_VN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Frank — Solo Indie Developer & Product Maker",
-    description: "Building focused, useful software for everyday life.",
-  },
+  metadataBase: new URL(SITE.url),
+  title: { default: "HowDoI - Practical GitHub Setup Guides", template: "%s | HowDoI" },
+  description: SITE.description,
+  robots: { index: isPublicRelease(), follow: true },
+  openGraph: { siteName: "HowDoI", locale: "en_US", type: "website" },
+  twitter: { card: "summary" }
 };
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="vi" className="scroll-smooth">
-      <body className={`${inter.variable} font-sans antialiased bg-slate-50 text-slate-900 min-h-screen flex flex-col`}>
-        <LanguageProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </LanguageProvider>
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><body className="antialiased min-h-screen flex flex-col">
+    <a className="hd-skip" href="#main-content">Skip to content</a>
+    <Header />
+    <LanguageProvider><main id="main-content" className="flex-1" tabIndex={-1}>{children}</main></LanguageProvider>
+    <Footer />
+  </body></html>;
 }

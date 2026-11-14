@@ -1,0 +1,9 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import PageIntro from "@/components/site/PageIntro";
+import { canonical } from "@/lib/site";
+
+export const metadata: Metadata = { title: "About", description: "Why HowDoI exists: useful GitHub tools, clear setup steps and honest limitations.", alternates: { canonical: canonical("/about") } };
+export default function About() {
+  return <div className="hd-container hd-page"><PageIntro eyebrow="ABOUT HOWDOI" title="A clearer way to get started." description="Useful GitHub tools, clear setup steps, and honest limitations." /><div className="hd-reading"><h2>From a repository to a useful result</h2><p>A repository can be useful without being easy to set up. HowDoI is a practical guide library for beginners who want a clear starting point: the platform to use, the requirements to check, the commands to follow, and the limitations to understand.</p><h2>Independent, with two separate paths</h2><p>I am the independent developer behind HowDoI. Complete guides are free to read, without a login or email gate. The site is being built to support clearly separated display advertising; advertising is not active in this rebuild.</p><p>I also offer focused custom web products and SaaS MVP development through <Link href="/build-with-me">Build With Me</Link>. This is a separate, scoped development service, not paid access to installation instructions.</p><h2>Evidence before claims</h2><p>Every published guide identifies its sources, platform and verification status. A documentation review is not a runtime test. Read the <Link href="/editorial-policy">editorial policy</Link> for how these labels work.</p><h2>Earlier HowDoI tools</h2><p>Earlier tools and articles are being preserved separately for existing visitors. You can find the previous finance-tool homepage in the <Link href="/legacy">legacy section</Link>. Those pages are not installation guides in the new library.</p></div></div>;
+}
